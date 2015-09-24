@@ -1,0 +1,33 @@
+{
+  "name": "PACKAGENAME",
+  "version": "1.0.0",
+  "homepage": "https://github.com/NielsHolt/PACKAGENAME",
+  "authors": [
+    "Niels Holt <niels@steenbuchholt.dk>"
+  ],
+  "description": "Description from README.md",
+  "main": [
+    "dist/PACKAGENAME.min.js",
+    "dist/PACKAGENAME.min.css"
+  ],
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/NielsHolt/PACKAGENAME.git"
+	},
+  "dependencies": {
+    "jquery": "^1.9",
+    "leaflet": "^0.7.3",
+    "moment": "^2.9.0"
+  },
+	"license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "moduleType": [
+    "es6"
+  ]
+}
