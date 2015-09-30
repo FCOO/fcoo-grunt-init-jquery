@@ -1,12 +1,12 @@
 # grunt-init-fcoo-jquery
-
+DETTE ER DEN NYESTE VERSION
 >Create a jQuery repository with [grunt-init] including template for .js and .scss files
 
 [grunt-init]: http://gruntjs.com/project-scaffolding
-[fcoo-application]: https://github.com/FCOO/fcoo-application
+[fcoo-web-dev]: https://github.com/FCOO/fcoo-web-dev
 
 ## Installation
-See [fcoo-application on GitHub][fcoo-application] on how to install [grunt-init] and the other packages needed.
+See [fcoo-web-dev on GitHub][fcoo-web-dev] on how to install [grunt-init] and the other packages needed.
 
 Once grunt-init is installed, place this template in your `~/.grunt-init/` directory. 
 
@@ -18,14 +18,14 @@ git clone https://github.com/fcoo/grunt-init-fcoo-jquery.git ~/.grunt-init/fcoo-
 
 On windows use
 ```
-git clone https://github.com/fcoo/grunt-init-fcoo-jquery.git %USERPROFILE%/.grunt-init/fcoo-jquery
+git clone https://github.com/fcoo/grunt-init-fcoo-jquery.git "%USERPROFILE%/.grunt-init/fcoo-jquery"
 ```
 or see [the documentation][grunt-init] for the correct destination directory path
 
 ## Usage
 
 1.	Create the new repository in [GitHub/FCOO](https://github.com/FCOO)
-2.	Clone the new repository onto your computer
+2.	Clone the new repository to your computer/Desktop 
 3.	Open a command-prompt and go to the directory with the new (empty) repository
 4.	Run the command below and follow the prompts
 
