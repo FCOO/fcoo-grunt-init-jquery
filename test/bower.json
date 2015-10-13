@@ -1,23 +1,29 @@
 {
-  "name"		: "{%= name %}",
+  "name"		: "test",
   "version"	: "0.0.0",
-  "homepage": "https://github.com/FCOO/{%= name %}",
+  "homepage": "https://github.com/FCOO/test",
   "authors": [
-    "{%= author_name %} {%= author_email %}"
+    "Niels Holt <niels@steenbuchholt.dk>"
   ],
-  "description": "{%= description %}",
+  "description": "",
   "main": [
-    "dist/{%= name %}.min.js",
-    "dist/{%= name %}.min.css"
+    "dist/test.min.js",
+    "dist/test.min.css"
   ],
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/FCOO/{%= name %}.git"
+		"url": "git://github.com/FCOO/test.git"
 	},
 
 	"dependencies": {
 		"jquery": "latest",
 		"moment": "latest"
+	},
+
+	"overrides": {
+		"modernizr"											: { "main"	: "modernizr.js" },
+		"BOWER_PACKAGE_NOT_TO_BE_USED"	: { "ignore": true },
+		"webshim"												: { "main"	: "js-webshim/minified/polyfiller.js" }
 	},
 
 	"devDependencies": {

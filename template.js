@@ -14,7 +14,7 @@ exports.description = 'Create a FCOO repository with a jQuery plugin, including 
 // Template-specific notes to be displayed before question prompts.
 exports.notes = 
 	'Please enter following information:' +
-  '\n\n'+
+//  '\n\n'+
 //	'should be a unique ID not already in use at plugins.jquery.com. _Project ' +
 //  'title_ should be a human-readable title, and doesn\'t need to contain ' +
 //  'the word "jQuery", although it may. For example, a plugin titled "Awesome ' +
@@ -25,10 +25,10 @@ exports.notes =
 // Template-specific notes to be displayed after question prompts.
 exports.after = 
 	'You should now run the following commands' +
-  '\n\n'+
+  '\n'+
 	'>bower update' +
-  '\n\n'+
-	'>grunt MANGLER' +
+  '\n'+
+	'>grunt init' +
 
 	'';
 
@@ -38,17 +38,27 @@ exports.warnOn = '*';
 // The actual init template.
 exports.template = function(grunt, init, done) {
   init.process({type: 'jquery'}, [
-    // Prompt for these values.
-    init.prompt('name'),
-    {
+	
+		init.prompt('name'),
+
+		{
 			name: 'class_name',
-			message: 'Name of new class',
-			default: 'MyClass', 
-//			validator: /^[\w\-\.]+$/, ([A-Z])\w+
+			message: 'Name of new class (CamelCase)',
+			default: function(value, data, done) {
+				var className = data.name;
+
+				className = className.replace(/[\W_]+/g, ' ');
+		    className = className.replace(/\w+/g, function(word) {
+					return word[0].toUpperCase() + word.slice(1).toLowerCase();
+		    });
+				className = className.replace(/ /g, '');
+				done(null, className);
+			},
 			validator: /([A-Z])\w+/, 
 			warning: 'Only letters. Must start with a upper case letter ("MyClass" not "myClass")'
 		},
-		init.prompt('description', '(The description from the README.md file)'),
+
+		init.prompt('description (from README.md)'),
 /*
 		init.prompt('github_user'),
 		init.prompt('version'),
@@ -62,9 +72,11 @@ exports.template = function(grunt, init, done) {
 
 
 		//Add default values
-//		props.class_name = props.class_name || 'MyClass';
 		props.licenses = ['MIT'];
 		props.year = (new Date()).getFullYear();
+
+		props.jquery_class_name = props.class_name; 
+		props.jquery_class_name = props.jquery_class_name.substring(0, 1).toLowerCase() + props.jquery_class_name.substring(1);
 
     // Files to copy (and process).
     var files = init.filesToCopy(props);
@@ -74,28 +86,6 @@ exports.template = function(grunt, init, done) {
 
     // Actually copy (and process) files.
     init.copyAndProcess(files, props);
-
-    // Generate package.json file, used by npm and grunt.
-/*
-		init.writePackageJSON('package.json', {
-      name: 'jquery-plugin',
-      version: '0.0.0-ignored',
-      npm_test: 'grunt qunit',
-      // TODO: pull from grunt's package.json
-      node_version: '>= 0.8.0',
-      devDependencies: {
-        'grunt-contrib-jshint': '~0.10.0',
-        'grunt-contrib-qunit': '~0.2.0',
-        'grunt-contrib-concat': '~0.3.0',
-        'grunt-contrib-uglify': '~0.2.0',
-        'grunt-contrib-watch': '~0.4.0',
-        'grunt-contrib-clean': '~0.4.0',
-      },
-    });
-*/
-
-
-
 
     // All done!
     done();

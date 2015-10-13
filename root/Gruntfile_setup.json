@@ -1,0 +1,5 @@
+{
+	"isApplication"			: false,
+	"haveStyleSheet"		: true,
+	"exitOnJSHintError"	: true
+}

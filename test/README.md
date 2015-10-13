@@ -1,5 +1,5 @@
-# {%= name %}
->{%= description %}
+# test
+>
 
 
 ## Description
@@ -7,13 +7,13 @@ This package is used for...
 
 ## Installation
 ### bower
-`bower install https://github.com/FCOO/{%= name %}.git --save`
+`bower install https://github.com/FCOO/test.git --save`
 
 ## Demo
-http://FCOO.github.io/{%= name %}/demo/ 
+http://FCOO.github.io/test/demo/ 
 
 ## Usage
-```var my{%= class_name %} = new {%= class_name %}( options );```
+```var myTest = new Test( options );```
 
 
 ### options
@@ -41,13 +41,13 @@ http://FCOO.github.io/{%= name %}/demo/
 
 
 ## Copyright and License
-This plugin is licensed under the [MIT license](https://github.com/FCOO/{%= name %}/LICENSE).
+This plugin is licensed under the [MIT license](https://github.com/FCOO/test/LICENSE).
 
 Copyright (c) 2015 [FCOO](https://github.com/FCOO)
 
 ## Contact information
 
-{%= author_name %} {%= author_email %}
+Niels Holt nho@fcoo.dk
 
 
 ## Credits and acknowledgements
