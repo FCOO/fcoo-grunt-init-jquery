@@ -1,6 +1,5 @@
 # grunt-init-fcoo-jquery
 
-NY VERSION
 >Create a jQuery repository with [grunt-init] including template for .js and .scss files
 
 [grunt-init]: http://gruntjs.com/project-scaffolding
