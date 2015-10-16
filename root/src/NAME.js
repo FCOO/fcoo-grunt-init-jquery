@@ -50,7 +50,7 @@
 	ns.{%= class_name %}.prototype = {
 
 		//myMethod
-		myMethod: function( arg1, arg2 ){
+		myMethod: function( /*arg1, arg2*/ ){
 		},
 		
 

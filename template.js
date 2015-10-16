@@ -2,8 +2,6 @@
  * grunt-init-fcoo-jquery
  * https://gruntjs.com/
  *
- * Copyright (c) 2013 "Cowboy" Ben Alman, contributors
- * Licensed under the MIT license.
  */
 
 'use strict';
@@ -12,24 +10,19 @@
 exports.description = 'Create a FCOO repository with a jQuery plugin, including SCSS (and CSS).';
 
 // Template-specific notes to be displayed before question prompts.
-exports.notes = 
-	'Please enter following information:' +
-//  '\n\n'+
-//	'should be a unique ID not already in use at plugins.jquery.com. _Project ' +
-//  'title_ should be a human-readable title, and doesn\'t need to contain ' +
-//  'the word "jQuery", although it may. For example, a plugin titled "Awesome ' +
-//  'Plugin" might have the name "awesome-plugin".' +
-	'';
+exports.notes = 'Please enter following information:';
 
 
 // Template-specific notes to be displayed after question prompts.
 exports.after = 
-	'You should now run the following commands' +
-  '\n'+
-	'>bower update' +
-  '\n'+
-	'>grunt init' +
-
+	'*******************************************\n' +
+	'You should now run the following commands\n' +
+	'>bower update\n' +
+	'>npm install\n' +
+	'>grunt dev\n' +
+	'or >bower update & npm install & grunt dev (on Windows)\n' +
+	'or >bower update ; npm install ; grunt dev (on Linux)\n' +
+	'*******************************************\n' +
 	'';
 
 // Any existing file or directory matching this wildcard will cause a warning.
@@ -66,7 +59,8 @@ exports.template = function(grunt, init, done) {
     init.prompt('homepage'),
 */
     init.prompt('author_name'),
-    init.prompt('author_email'),
+
+		init.prompt('author_email'),
 
   ], function(err, props) {
 
@@ -76,7 +70,7 @@ exports.template = function(grunt, init, done) {
 		props.year = (new Date()).getFullYear();
 
 		props.jquery_class_name = props.class_name; 
-		props.jquery_class_name = props.jquery_class_name.substring(0, 1).toLowerCase() + props.jquery_class_name.substring(1);
+		props.jquery_class_name = props.jquery_class_name.substring(0, 1).toLowerCase() + props.jquery_class_name.substring(1); //myClass => MyClass
 
     // Files to copy (and process).
     var files = init.filesToCopy(props);

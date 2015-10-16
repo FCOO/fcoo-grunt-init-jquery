@@ -1,3 +1,0 @@
-[submodule "root/gruntfile"]
-	path = root/gruntfile
-	url = https://github.com/FCOO/gruntfile.js
