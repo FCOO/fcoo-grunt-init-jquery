@@ -17,7 +17,7 @@
     "grunt-exec"					: "latest",
     "grunt-jsonmin"				: "latest",
     "grunt-prompt"				: "latest",
-    "grunt-release"				: "latest",,
+    "grunt-release"				: "latest",
     "grunt-sass"					: "latest",
     "grunt-text-replace"	: "latest",
     "load-grunt-tasks"		: "latest",
