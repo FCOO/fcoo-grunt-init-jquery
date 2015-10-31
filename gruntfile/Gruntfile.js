@@ -42,7 +42,7 @@ module.exports = function(grunt) {
 
 	//Capture the log.header function to remove the 'Running tast SOMETHING" message
 	grunt.log.header = function(txt){
-//		grunt.log.writeln('-');
+		//only for test: grunt.log.writeln('-'+txt+'-');
 	};
 
 	//merge: Merge all the options given into a new object
@@ -224,7 +224,7 @@ module.exports = function(grunt) {
 									{	force: !gruntfile_setup.exitOnJSHintError },
 									jshint_options																	//All options are placed in .jshintrc allowing jshint to be run as stand-alone command
 								),
-		  all			: ['src/**/*.js'],
+		  all			: srcExclude_('src/**/*.js'), //['src/**/*.js'],
 		},
 
 		// ** uglify **		
@@ -240,8 +240,9 @@ module.exports = function(grunt) {
 			npm_install	: 'npm install',
 			git_add_all					: 'git add -A',
 			git_checkout_master	: 'git checkout master',
-			git_checkout_ghpages: 'git checkout gh-pages',
-			git_merge_master		: 'git merge master'
+			git_checkout_ghpages: 'git checkout "gh-pages"',
+			git_merge_master		: 'git merge master',
+			git_push_ghpages		: 'git push "origin" gh-pages'		
 		},
 
 		// ** replace **
@@ -370,11 +371,26 @@ module.exports = function(grunt) {
 				commitMessage	: 'Release <%= version %>',
 				tagMessage		: 'Version <%= version %>', 
 
-				beforeBump		: [],								// optional grunt tasks to run before file versions are bumped 
-				afterBump			: ['replace:dist_indexhtml_version'],	// optional grunt tasks to run after file versions are bumped 
-				beforeRelease	: ['exec:git_add_all', '_github_merge'],									// optional grunt tasks to run after release version is bumped up but before release is packaged 
-				afterRelease	: [],																	// optional grunt tasks to run after release is packaged 
-				updateVars		: ['bwr'],														// optional grunt config objects to update (this will update/set the version property on the object specified) 
+				//beforeBump = optional grunt tasks to run before file versions are bumped 
+				beforeBump		: [],
+
+				//afterBump = optional grunt tasks to run after file versions are bumped 
+				afterBump			: ['replace:dist_indexhtml_version'],
+
+				//beforeRelease = optional grunt tasks to run after release version is bumped up but before release is packaged 
+				beforeRelease	: [ 'exec:git_add_all' ],					
+					
+				//afterRelease = optional grunt tasks to run after release is packaged 
+				afterRelease	: [
+					'exec:git_checkout_ghpages',
+					'exec:git_merge_master',
+					'exec:git_checkout_master',
+					'exec:git_push_ghpages'
+				],
+
+				//updateVars = optional grunt config objects to update (this will update/set the version property on the object specified) 
+				updateVars		: ['bwr']
+
 /*************************
 //github: {..} obmitted  
 				github: {
@@ -478,6 +494,8 @@ module.exports = function(grunt) {
 
 		if (grunt.config('ghpages'))
 			grunt.log.writeln('- Merge "master" branch into "gh-pages" branch');
+		else
+			grunt.config.set('release.options.afterRelease', []); //Remove all git merge commands
 
 		if (grunt.config('newVersion') != 'none')
 			grunt.log.writeln('- Push all branches and tags to GitHub');
@@ -490,16 +508,6 @@ module.exports = function(grunt) {
 		grunt.log.writeln('**************************************************');
 	});
 
-
-	//_github_merge
-	grunt.registerTask('_github_merge', function(){
-		if (grunt.config('ghpages'))
-			grunt.task.run([
-				'exec:git_checkout_ghpages',
-				'exec:git_merge_master',
-				'exec:git_checkout_master'
-			]);
-	});
 
 	//_github_run_tasks: if confirm is true => run the github tasks (githubTasks)
 	grunt.registerTask('_github_run_tasks', function() {  
