@@ -22,6 +22,7 @@
 
 	function {%= class_name %}( $elem, options, plugin_count) {
 		this.plugin_count = plugin_count;
+		this.VERSION = "{VERSION}";
 		this.options = $.extend({
 			//Default options
 		}, options || {} );
