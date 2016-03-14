@@ -16,12 +16,12 @@ exports.notes = 'Please enter following information:';
 // Template-specific notes to be displayed after question prompts.
 exports.after =
 	'*******************************************\n' +
-	'You should now run the following commands\n' +
-	'>bower update\n' +
-	'>npm install\n' +
+	'FINISH :-)\n' +
+	'>You can now use the following cmd\n' +
+	'>grunt check\n' +
 	'>grunt dev\n' +
-	'or >bower update & npm install & grunt dev (on Windows)\n' +
-	'or >bower update ; npm install ; grunt dev (on Linux)\n' +
+	'>grunt prod\n' +
+	'>grunt github\n' +
 	'*******************************************\n' +
 	'';
 
@@ -64,17 +64,6 @@ exports.template = function(grunt, init, done) {
 
   ], function(err, props) {
 
-		//Save any files in _ORIGINAL
-    grunt.util.spawn(
-			{
-				cmd: "dir"//,
-				//args: ["install"],
-				//opts: {cwd: init.destpath, stdio: "inherit"}
-			}
-		);
-
-
-
 		//Add default values
 		props.licenses = ['MIT'];
 		props.year = (new Date()).getFullYear();
@@ -98,24 +87,17 @@ exports.template = function(grunt, init, done) {
 		  "gruntfile.js": src_path + "gruntfile.js"
 		}, props );
 
-    // All done!
-    //done();
-
     // Run npm install in project's directory
     grunt.util.spawn(
-			{
-				cmd: "npm",
-				args: ["install"],
-				opts: {cwd: init.destpath, stdio: "inherit"}
-			},
+			{	cmd: "npm",	args: ["install"],	opts: {cwd: init.destpath, stdio: "inherit"}	},
       function(error, result, code) {
-				/*jshint unused:vars*/
-        // All done!
-        done();
+				// Run npm install in project's directory
+		    grunt.util.spawn(
+					{	cmd: "bower",	args: ["update"],	opts: {cwd: init.destpath, stdio: "inherit"}	},
+					function(error, result, code) { done(); }
+				);
       }
 		);
-
-
 
 
 
