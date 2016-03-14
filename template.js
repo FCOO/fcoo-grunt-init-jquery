@@ -64,6 +64,16 @@ exports.template = function(grunt, init, done) {
 
   ], function(err, props) {
 
+		//Save any files in _ORIGINAL
+    grunt.util.spawn(
+			{
+				cmd: "dir"//,
+				//args: ["install"],
+				//opts: {cwd: init.destpath, stdio: "inherit"}
+			}
+		);
+
+
 
 		//Add default values
 		props.licenses = ['MIT'];
