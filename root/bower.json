@@ -16,8 +16,7 @@
 	},
 
 	"dependencies": {
-		"jquery": "latest",
-		"moment": "latest"
+		"jquery": "latest"
 	},
 
 	"devDependencies": {
