@@ -13,12 +13,12 @@ Once [grunt-init] is installed, place this template in your `~/.grunt-init/` dir
 It's recommended that you use git to clone this template into that directory, as follows:
 
 ```
-git clone https://github.com/fcoo/grunt-init-fcoo-jquery.git ~/.grunt-init/fcoo-jquery
+git clone https://github.com/fcoo/grunt-init-fcoo-jquery.git ~/.grunt-init/grunt-init-fcoo-jquery
 ```
 
 On windows use
 ```
-git clone https://github.com/fcoo/grunt-init-fcoo-jquery.git "%USERPROFILE%/.grunt-init/fcoo-jquery"
+git clone https://github.com/fcoo/grunt-init-fcoo-jquery.git "%USERPROFILE%/.grunt-init/grunt-init-fcoo-jquery"
 ```
 or see [the documentation][grunt-init] for the correct destination directory path
 
@@ -30,7 +30,7 @@ or see [the documentation][grunt-init] for the correct destination directory pat
 4.	Run the command below and follow the prompts
 
 ```
-grunt-init fcoo-jquery
+grunt-init grunt-init-fcoo-jquery
 ```
 
 If you want to see a list of installed templates, run the command `grunt-init`
